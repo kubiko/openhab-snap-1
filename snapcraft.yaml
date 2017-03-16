@@ -12,6 +12,12 @@ description: |
 confinement: strict
 grade: stable
 
+plugs:
+  jre:
+    interface: content
+    default-provider: java-jre-ondra
+    target: $SNAP/jre
+
 apps:
     openhab:
         command: openhab-control karaf server
@@ -58,15 +64,6 @@ parts:
         prime:
           - -start*
           - -runtime/bin/*.bat
-
-    # java run time
-    jre:
-        plugin: zulu-jre
-        # zulu supported arcghitectures(armhf, amd64) are already handled by plugin itself
-        # define here overide for pluging's defaults, or to add additional architectures
-        # example overide:
-        # zulu:
-        #     amd64: https://www.azul.com/downloads/zulu/zdk-8-ga-linux_x64.tar.gz
 
     # helper scripts
     openhab-control:

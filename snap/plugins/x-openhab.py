@@ -57,6 +57,7 @@ class OpenHabPlugin(snapcraft.BasePlugin):
         self._modify_oh2_dir()
         self._modify_setenv()
         self._fix_instance_path()
+        os.mkdir(self.installdir+"/jre")
 
     def pull(self):
         super().pull()
