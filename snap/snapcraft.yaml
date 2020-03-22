@@ -170,6 +170,14 @@ apps:
         plugs:
             - network
 
+    # workaround for bug when rules are not processed properly and need to be reloaded
+    reload-rules:
+        after:
+          - openhab
+        adapter: none
+        command: bin/reload-rules
+        daemon: oneshot
+
 parts:
     openhab:
         plugin: nil
