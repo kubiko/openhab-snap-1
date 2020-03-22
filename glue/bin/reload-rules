@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# openHAB strugles to process rules after restar, not recognising items
+# work around is at the moment reloading of the rules
+
+# taking Pi3 as reference of slownes, wait 90s for openhab service to start
+sleep 90
+
+# reload rules
+find ${SNAP_DATA}/conf/rules/ -name "*.rules" -exec touch {} \;
